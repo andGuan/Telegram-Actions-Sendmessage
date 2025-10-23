@@ -7,9 +7,6 @@ jobs:
   send-message:
     runs-on: ubuntu-22.04
     steps:
-      - name: Send "Hello" to specific user
-        # 使用curl调用Telegram Bot API发送消息
-        run: |
-          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
-            -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
-            -d "text=你好"
+      - name: 更新消息
+        # 使用curl调用Telegram Bot API 更新消息
+        run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/getUpdates" 
